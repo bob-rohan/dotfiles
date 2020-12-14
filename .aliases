@@ -1,0 +1,15 @@
+# personal aliases
+alias j='jrnl'
+alias jo='jrnl -n 50 | grep -v -e "^$"'
+
+# personal sale ASGs
+alias scale='/Users/bob.rohan/git/utils/imp/python/scaling.py'
+
+# personal ip stuff
+# alias whatsmyip='dig +short myip.opendns.com @resolver1.opendns.com'
+alias whatsmyip='curl -4 ifconfig.co'
+
+# personal db stuff
+alias rdsconnectgetip='echo $(aws ec2 describe-instances --filters Name=tag:Name,Values="*rdsconnect*" --query "Reservations[*].Instances[*].PrivateIpAddress" --output text 2>/dev/null)'
+alias rdsconnect='ssh -i ~/.ssh/prod.pem ec2-user@$(ipcheck rdsconnect)'
+alias datafix='. ~/git/devops/local_utils/helpers/datafixRequiredInfoHelper.sh'
