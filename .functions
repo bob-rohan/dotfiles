@@ -6,24 +6,6 @@ ipcheck() {
   fi
 }
 
-# deprecated
-# personal aws fiddle
-bkaws() {
-  if [ -z $1 ]; then
-    echo "env?"
-  else
-    cp ~/.aws/credentials ~/.aws/credentials.$1
-  fi
-}
-
-rtaws(){
-  if [ -z $1 ]; then
-    echo "env?"
-  else
-    cp ~/.aws/credentials.$1 ~/.aws/credentials
-  fi
-}
-
 # personal env exports switch
 
 unsetaws() {
