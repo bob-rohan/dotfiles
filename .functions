@@ -24,7 +24,7 @@ prod() {
   export TF_VAR_aws_account=prod
   export TF_VAR_aws_account_num=510505205118
 
-  tmux set-option status-style fg=black,bg=red
+  tmux select-pane -t:.1 -P 'fg=black,bg=red'
 
   mawsauth $AWS_PROFILE
 }
@@ -39,7 +39,7 @@ nonprod() {
   export TF_VAR_aws_account=nonprod
   export TF_VAR_aws_account_num=562370771964
 
-  tmux set-option status-style fg=black,bg=white
+  tmux select-pane -t:.1 -P 'fg=black,bg=green'
 
   mawsauth $AWS_PROFILE
 
@@ -55,13 +55,13 @@ dev() {
   export TF_VAR_aws_account=dev
   export TF_VAR_aws_account_num=084207842491
 
-  tmux set-option status-style fg=black,bg=green
+  tmux select-pane -t:.1 -P 'fg=black,bg=white'
 
   mawsauth $AWS_PROFILE
 
 }
 
-mawsauth() {
+mmawsauth() {
 
   # security delete-generic-password -a ${USER} -s azuread
   # security add-generic-password -a ${USER} -s azuread -w
