@@ -53,3 +53,28 @@ dev() {
   . $HOME/git/jumpbox-client/client/awsauth.sh $AWS_PROFILE
 
 }
+
+#AWS Profile
+prompt_aws() {
+  local spaces="  "
+
+  if [[ -n "$AWS_PROFILE" ]]; then
+    local current_timestamp=$(date +%s)
+    local valid_until=$(aws configure get aws_expiration --profile $AWS_PROFILE 2>/dev/null)
+    local valid_until_timestamp=$(TZ=GMT+0:00 date -j -f "%Y-%m-%dT%H:%M:%S" ${valid_until} +%s 2>/dev/null)
+
+    if [[ $current_timestamp -le $valid_until_timestamp ]]; then
+      # Token is still valid
+      time_diff="~$(( ($valid_until_timestamp - $current_timestamp) / 60 ))min"
+      BULLETTRAIN_AWS_BG='green'
+      CONTENT="$BULLETTRAIN_AWS_PREFIX$spaces$AWS_PROFILE $time_diff"
+    else
+      # Token expired
+      BULLETTRAIN_AWS_BG='red'
+      CONTENT="$BULLETTRAIN_AWS_PREFIX$spaces$AWS_PROFILE"
+    fi
+
+    prompt_segment $BULLETTRAIN_AWS_BG $BULLETTRAIN_AWS_FG "$CONTENT"
+
+  fi
+}
