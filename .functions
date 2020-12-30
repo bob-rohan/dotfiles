@@ -24,9 +24,7 @@ prod() {
   export TF_VAR_aws_account=prod
   export TF_VAR_aws_account_num=510505205118
 
-  tmux select-pane -t:.1 -P 'fg=black,bg=red'
-
-  mawsauth $AWS_PROFILE
+  . $HOME/git/jumpbox-client/client/awsauth.sh $AWS_PROFILE
 }
 
 nonprod() {
@@ -39,10 +37,7 @@ nonprod() {
   export TF_VAR_aws_account=nonprod
   export TF_VAR_aws_account_num=562370771964
 
-  tmux select-pane -t:.1 -P 'fg=black,bg=green'
-
-  mawsauth $AWS_PROFILE
-
+  . $HOME/git/jumpbox-client/client/awsauth.sh $AWS_PROFILE
 }
 
 dev() {
@@ -55,32 +50,6 @@ dev() {
   export TF_VAR_aws_account=dev
   export TF_VAR_aws_account_num=084207842491
 
-  tmux select-pane -t:.1 -P 'fg=black,bg=white'
-
-  mawsauth $AWS_PROFILE
-
-}
-
-mmawsauth() {
-
-  # security delete-generic-password -a ${USER} -s azuread
-  # security add-generic-password -a ${USER} -s azuread -w
-
-  export AZURE_DEFAULT_PASSWORD=$(security find-generic-password -a $USER -s azuread -w)
-
-  if [ -z $1 ]; then
-    aws-azure-login --no-prompt --all-profiles
-  else
-    AWS_PROFILE=$1
-    aws sts get-caller-identity &>/dev/null
-    IS_SESSION_VALID=$?
-
-    if [ $IS_SESSION_VALID -ne 0 ]; then
-      echo "refreshing $1 creds"
-      aws-azure-login --no-prompt --profile $1
-    fi
-  fi
-
-  unset AZURE_DEFAULT_PASSWORD
+  . $HOME/git/jumpbox-client/client/awsauth.sh $AWS_PROFILE
 
 }
