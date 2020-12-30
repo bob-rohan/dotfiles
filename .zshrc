@@ -8,7 +8,7 @@ export ZSH="/Users/bob.rohan/.oh-my-zsh"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="robbyrussell"
+#ZSH_THEME="robbyrussell"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -88,7 +88,15 @@ antigen bundle kubectl
 antigen bundle zsh-users/zsh-syntax-highlighting
 
 # Load the theme.
-antigen theme robbyrussell
+#antigen theme robbyrussell
+antigen theme https://github.com/caiogondim/bullet-train-oh-my-zsh-theme bullet-train
+
+BULLETTRAIN_PROMPT_ORDER=(
+    dir
+    git
+    aws
+    kctx
+)
 
 # Tell Antigen that you're done.
 antigen apply
@@ -130,8 +138,8 @@ if command -v tmux &> /dev/null && [ -z "$TMUX" ]; then
 fi
 
 # pesonal - kube-ps1
-source "/usr/local/opt/kube-ps1/share/kube-ps1.sh"
-PS1='$(kube_ps1)'$PS1
+#source "/usr/local/opt/kube-ps1/share/kube-ps1.sh"
+#PS1='$(kube_ps1)'$PS1
 
 . ~/.functions
 . ~/.aliases
