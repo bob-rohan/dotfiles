@@ -98,6 +98,8 @@ BULLETTRAIN_PROMPT_ORDER=(
     kctx
 )
 
+BULLETTRAIN_KCTX_BG=cyan
+
 # Tell Antigen that you're done.
 antigen apply
 
