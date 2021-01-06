@@ -152,4 +152,4 @@ alias vpn-dev=~/vpn-dev.sh
 alias vpn-nonprod=~/vpn-nonprod.sh
 alias vpn-prod=~/vpn-prod.sh
 alias vpn-mgmt=~/vpn-mgmt.sh
-
+alias awsrole=/Users/bob.rohan/git/jumpbox-client/client/awsrole.sh
