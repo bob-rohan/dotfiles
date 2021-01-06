@@ -19,12 +19,23 @@ prod() {
   unsetaws
 
   export AWS_DEFAULT_REGION=eu-west-2
-  export AWS_PROFILE=prod
 
   export TF_VAR_aws_account=prod
   export TF_VAR_aws_account_num=510505205118
 
-  . $HOME/git/jumpbox-client/client/awsauth.sh $AWS_PROFILE
+  . $HOME/git/jumpbox-client/client/awsauth.sh prod
+}
+
+mgmt() {
+
+  unsetaws
+
+  export AWS_DEFAULT_REGION=eu-west-2
+
+  export TF_VAR_aws_account=prod
+  export TF_VAR_aws_account_num=510505205118
+
+  . $HOME/git/jumpbox-client/client/awsauth.sh mgmt
 }
 
 nonprod() {
@@ -32,12 +43,11 @@ nonprod() {
   unsetaws
 
   export AWS_DEFAULT_REGION=eu-west-2
-  export AWS_PROFILE=nonprod
 
   export TF_VAR_aws_account=nonprod
   export TF_VAR_aws_account_num=562370771964
 
-  . $HOME/git/jumpbox-client/client/awsauth.sh $AWS_PROFILE
+  . $HOME/git/jumpbox-client/client/awsauth.sh nonprod
 }
 
 dev() {
@@ -45,12 +55,11 @@ dev() {
   unsetaws
 
   export AWS_DEFAULT_REGION=eu-west-2
-  export AWS_PROFILE=dev
 
   export TF_VAR_aws_account=dev
   export TF_VAR_aws_account_num=084207842491
 
-  . $HOME/git/jumpbox-client/client/awsauth.sh $AWS_PROFILE
+  . $HOME/git/jumpbox-client/client/awsauth.sh dev
 
 }
 
