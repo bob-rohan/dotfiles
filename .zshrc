@@ -139,12 +139,9 @@ if command -v tmux &> /dev/null && [ -z "$TMUX" ]; then
     tmux attach -t default || tmux new -s default
 fi
 
-# pesonal - kube-ps1
-#source "/usr/local/opt/kube-ps1/share/kube-ps1.sh"
-#PS1='$(kube_ps1)'$PS1
-
 . ~/.functions
 . ~/.aliases
+. ~/.exports
 
 # hodge aliases
 alias awsauth='source /Users/bob.rohan/git/jumpbox-client/client/awsauth.sh'
