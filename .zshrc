@@ -83,6 +83,7 @@ antigen bundle command-not-found
 antigen bundle kubectl
 #antigen bundle aws
 #antigen bundle ansible
+antigen bundle zsh-users/zsh-autosuggestions
 
 # Syntax highlighting bundle.
 antigen bundle zsh-users/zsh-syntax-highlighting
