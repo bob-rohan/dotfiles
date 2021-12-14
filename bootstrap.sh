@@ -2,7 +2,7 @@
 
 __script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
-FILENAMES=( .functions .aliases .exports .zshrc )
+FILENAMES=( .functions .aliases .exports .tmux.conf .zshrc )
 for FILENAME in "${FILENAMES[@]}"; do
   echo "installing ${__script_dir}/$FILENAME"
   ln -sf ${__script_dir}/$FILENAME ~/$FILENAME
