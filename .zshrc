@@ -84,6 +84,7 @@ antigen bundle kubectl
 #antigen bundle aws
 #antigen bundle ansible
 antigen bundle zsh-users/zsh-autosuggestions
+antigen bundle kiurchv/asdf.plugin.zsh
 
 # Syntax highlighting bundle.
 antigen bundle zsh-users/zsh-syntax-highlighting
